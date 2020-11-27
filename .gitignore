@@ -1,0 +1,4 @@
+package
+opencl-amd.spec
+**/*.rpm
+.build-*.log
