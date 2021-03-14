@@ -2,3 +2,5 @@ package
 opencl-amd.spec
 **/*.rpm
 .build-*.log
+.x86_64
+opencl-amd-*.src.rpm

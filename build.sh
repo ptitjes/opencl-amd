@@ -1,7 +1,7 @@
 prefix='amdgpu-pro-'
 postfix='-ubuntu-20.04'
 major='20.45'
-minor='1164792'
+minor='1188099'
 amdver='2.4.100'
 shared="opt/amdgpu-pro/lib/x86_64-linux-gnu"
 shared2="opt/amdgpu/lib/x86_64-linux-gnu"
@@ -86,9 +86,6 @@ package() {
 	mkdir -p "${pkgdir}/opt/amdgpu/share/libdrm"
 	cd "${pkgdir}/opt/amdgpu/share/libdrm"
 	ln -s /usr/share/libdrm/amdgpu.ids amdgpu.ids
-
-	rm -r "${srcdir}/opencl"
-	rm -r "${srcdir}/libdrm"
 }
 
 writeSpec() {
@@ -142,4 +139,8 @@ ln -s ../../../../usr/share/libdrm/amdgpu.ids amdgpu.ids
 EOT
 }
 
-downloadSource && package && writeSpec #&& rm -rf "${srcdir}"
+cleanup() {
+  rm -rf "${srcdir}"
+}
+
+downloadSource && package && writeSpec && cleanup
